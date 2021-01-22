@@ -39,7 +39,7 @@ export const FeaturesComponent = ({ item, style }) => (
       </Text>
     </Text>
     <Text style={styles.textGray}>
-      {item.distance}
+      {item.distance + (item.deliveryFree && ' - Free delivery')}
     </Text>
   </View>
 );

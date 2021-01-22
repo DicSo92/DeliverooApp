@@ -55,7 +55,7 @@ export const ProductPage = () => {
           {FEATURE.describe}
         </Text>
         <Text style={styles.productDistance}>
-          {FEATURE.distance}
+          {FEATURE.distance + (FEATURE.deliveryFree && ' - Free delivery')}
         </Text>
         <Text style={styles.productDescription}>
           {FEATURE.description}
