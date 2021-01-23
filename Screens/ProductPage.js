@@ -11,8 +11,8 @@ import { FEATURES } from '../Assets/DATA'
 
 const FEATURE = FEATURES[0]
 
-export const ProductPage = () => {
-  const handleGoBack = () => {}
+export const ProductPage = ({navigation}) => {
+  const handleGoBack = () => {navigation.goBack()}
   const handleSearch = () => {}
   const handleShare = () => {}
 

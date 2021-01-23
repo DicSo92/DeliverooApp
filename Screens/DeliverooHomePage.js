@@ -28,7 +28,8 @@ import { CATEGORIES, NEWS, FEATURES } from "../Assets/DATA";
 
 export const MARGIN_LEFT_BODY = 13;
 
-export const DeliverooHomePage = () => {
+export const DeliverooHomePage = ({navigation}) => {
+
   const renderCategories = ({ item, index }) => (
     <FirstItemCategoriesComponent item={item} index={index} />
   );
@@ -36,7 +37,7 @@ export const DeliverooHomePage = () => {
     <FirstItemNewsComponent item={item} index={index} />
   );
   const renderFeatures = ({ item, index }) => (
-    <FirstItemFeaturesComponent item={item} index={index} />
+    <FirstItemFeaturesComponent navigation={navigation} item={item} index={index} />
   );
 
  // TODO - see topbar

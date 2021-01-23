@@ -1,5 +1,5 @@
 import React from "react";
-import { ImageBackground, View, StyleSheet } from "react-native";
+import {ImageBackground, View, StyleSheet, TouchableOpacity} from "react-native";
 
 import { Text } from "native-base";
 
@@ -7,8 +7,9 @@ import { COLORS, TYPOGRAPHY, ELEVATION } from "../Assets";
 
 export const FEATURE_WIDTH = 310
 
-export const FeaturesComponent = ({ item, style }) => (
-  <View style={{ ...styles.wrapperFeature, ...style }}>
+export const FeaturesComponent = ({ navigation, item, style }) => (
+  // <View style={{ ...styles.wrapperFeature, ...style }}>
+  <TouchableOpacity onPress={() => navigation.navigate("Product")} style={{ ...styles.wrapperFeature, ...style }}>
     <View style={styles.wrapperFeatureImage}>
       <ImageBackground source={{ uri: item.url }} style={ styles.featureImage }>
         <View style={styles.featurePromoWrapper}>
@@ -41,7 +42,7 @@ export const FeaturesComponent = ({ item, style }) => (
     <Text style={styles.textGray}>
       {item.distance + (item.deliveryFree && ' - Free delivery')}
     </Text>
-  </View>
+  </TouchableOpacity>
 );
 
 const styles = StyleSheet.create({
