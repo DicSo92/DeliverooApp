@@ -1,6 +1,7 @@
 export const COLORS = {
     primary: '#10e2b9',
-    secondary: '#ed4a62',
+    secondary: '#fb5058',
+    warning: '#fabe00',
     backgroundGray: '#fdfdfd',
     lightGray: '#f6f8f7',
     lightGrayDarken: '#f5f6f6',

@@ -12,7 +12,7 @@ export const NewsComponents = ({ item, style }) => {
       <ImageBackground source={{ uri: item.url }} style={{ ...styles.news, ...style }}>
         <TouchableOpacity style={styles.newsCommandButton}>
           <Text style={styles.newsCommandLabel}>
-            je commande
+            j'en profite !
           </Text>
         </TouchableOpacity>
       </ImageBackground>
@@ -32,13 +32,13 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     marginLeft: 10,
     paddingVertical: 4,
-    paddingHorizontal: 7,
+    paddingHorizontal: 14,
     backgroundColor: COLORS.primary,
     borderRadius: 5,
     alignSelf: "flex-start",
   },
   newsCommandLabel: {
     ...TYPOGRAPHY.M1,
-    fontWeight: 'bold'
+    fontWeight: "700",
   },
 })

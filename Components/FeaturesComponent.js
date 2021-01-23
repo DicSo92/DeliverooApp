@@ -1,5 +1,5 @@
 import React from "react";
-import {ImageBackground, View, StyleSheet, TouchableOpacity} from "react-native";
+import {Image, View, StyleSheet, TouchableOpacity} from "react-native";
 import { Text } from "native-base";
 import {SharedElement} from "react-navigation-shared-element";
 
@@ -12,14 +12,11 @@ export const FeaturesComponent = ({ navigation, item, style }) => (
   <TouchableOpacity onPress={() => navigation.navigate("Product", {itemId: item.id, img_url: item.url})} style={{ ...styles.wrapperFeature, ...style }}>
     <View style={styles.wrapperFeatureImage}>
       <SharedElement id={`item.${item.id}.url`}>
-        <ImageBackground source={{ uri: item.url }} style={ styles.featureImage }>
-          <View style={styles.featurePromoWrapper}>
-            <Text style={styles.featurePromoLabel}>
-              {item.promoLabel}
-            </Text>
-          </View>
-        </ImageBackground>
+        <Image source={{ uri: item.url }} style={ styles.featureImage }/>
       </SharedElement>
+      <View style={styles.featurePromoWrapper}>
+        <Text style={styles.featurePromoLabel}>{item.promoLabel}</Text>
+      </View>
       <View style={styles.featureTimeWrapper}>
         <Text style={styles.featureTimeValue}>
           {item.deliveryTime}
@@ -66,19 +63,27 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 180,
     borderRadius: 5,
-    overflow: "hidden",
+    resizeMode: 'cover'
   },
   featurePromoWrapper: {
     backgroundColor: COLORS.secondary,
-    paddingHorizontal: 3,
-    paddingVertical: 5,
+    borderColor: COLORS.warning,
+    borderWidth: 2,
+    position: 'absolute',
     alignSelf: "flex-start",
-    borderRadius: 5,
-    marginTop: 7,
-    marginLeft: 7,
+    borderRadius: 50,
+    top: 8, left: 8,
+    width: 65, height: 65,
+    display: 'flex',
+    justifyContent: 'center',
+    transform: [{rotate: '-16deg'}],
   },
   featurePromoLabel: {
-    ...TYPOGRAPHY.M1
+    ...TYPOGRAPHY.M1,
+    fontWeight: "700",
+    textAlign: 'center',
+    fontSize: 12,
+    lineHeight: 14
   },
   featureTimeWrapper: {
     paddingVertical: 6,

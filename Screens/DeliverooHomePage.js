@@ -260,7 +260,7 @@ const styles = StyleSheet.create({
   },
   // BODY
   body: {
-    paddingTop: 7,
+    paddingVertical: 7,
     backgroundColor: COLORS.backgroundGray,
   },
   // CATEGORIES SLIDER

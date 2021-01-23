@@ -14,7 +14,20 @@ const App = () => {
     <NavigationContainer>
       <Stack.Navigator initialRouteName='Home' headerMode='none'>
         <Stack.Screen name="Home" component={DeliverooHomePage}/>
-        <Stack.Screen name="Product" component={ProductPage} />
+        <Stack.Screen name="Product" component={ProductPage} options={() => ({
+            gestureEnabled: false,
+            transitionSpec: {
+                open: { animation: 'timing', config: {duration: 500} },
+                close: { animation: 'timing', config: {duration: 500} }
+            },
+            cardStyleInterpolator: ({ current: { progress} }) => {
+                return {
+                    cardStyle: {
+                        opacity: progress
+                    }
+                }
+            }
+        })}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -16,7 +16,7 @@ export const ProductPage = ({route, navigation}) => {
   const handleSearch = () => {}
   const handleShare = () => {}
   const { itemId, img_url } = route.params;
-  const FEATURE = FEATURES[itemId]
+  const FEATURE = FEATURES.find(feature => feature.id === itemId)
 
   ProductPage.sharedElements = route => {
     const { itemId } = route.params;
@@ -34,10 +34,7 @@ export const ProductPage = ({route, navigation}) => {
       {/*HEADER*/}
       <View style={styles.headerWrapper}>
         <SharedElement id={`item.${itemId}.url`}>
-          <Image
-              source={{ uri: img_url }}
-              style={styles.headerPicture}
-          />
+          <Image source={{ uri: img_url }} style={styles.headerPicture}/>
         </SharedElement>
         <View style={styles.headerButtonsWrapper}>
           <ButtonCircleComponent
@@ -88,7 +85,6 @@ export const ProductPage = ({route, navigation}) => {
           </Text>
         </View>
       </View>
-      <View ></View>
     </ScrollView>
   );
 };
@@ -101,6 +97,7 @@ const styles = StyleSheet.create({
   headerPicture: {
     width: '100%',
     height: 220,
+    resizeMode: 'cover'
   },
   headerWrapper: {
     position: 'relative'
