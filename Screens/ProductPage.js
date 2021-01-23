@@ -9,21 +9,36 @@ import {ButtonCircleComponent} from "../Components";
 import { COLORS, TYPOGRAPHY } from "../Assets";
 import { FEATURES } from '../Assets/DATA'
 
-const FEATURE = FEATURES[0]
+import {SharedElement} from "react-navigation-shared-element";
 
-export const ProductPage = ({navigation}) => {
+export const ProductPage = ({route, navigation}) => {
   const handleGoBack = () => {navigation.goBack()}
   const handleSearch = () => {}
   const handleShare = () => {}
+  const { itemId, img_url } = route.params;
+  const FEATURE = FEATURES[itemId]
+
+  ProductPage.sharedElements = route => {
+    const { itemId } = route.params;
+    return [
+      {
+        id: `item.${itemId}.url`,
+        animation: 'move',
+        resize: 'clip'
+      }
+    ];
+  };
 
   return (
     <ScrollView style={styles.wrapper} showsVerticalScrollIndicator={false}>
       {/*HEADER*/}
       <View style={styles.headerWrapper}>
-        <Image
-          source={{ uri: FEATURE.url }}
-          style={styles.headerPicture}
-        />
+        <SharedElement id={`item.${itemId}.url`}>
+          <Image
+              source={{ uri: img_url }}
+              style={styles.headerPicture}
+          />
+        </SharedElement>
         <View style={styles.headerButtonsWrapper}>
           <ButtonCircleComponent
             onPress={handleGoBack}

@@ -1,7 +1,7 @@
 import React from "react";
 import {ImageBackground, View, StyleSheet, TouchableOpacity} from "react-native";
-
 import { Text } from "native-base";
+import {SharedElement} from "react-navigation-shared-element";
 
 import { COLORS, TYPOGRAPHY, ELEVATION } from "../Assets";
 
@@ -9,15 +9,17 @@ export const FEATURE_WIDTH = 310
 
 export const FeaturesComponent = ({ navigation, item, style }) => (
   // <View style={{ ...styles.wrapperFeature, ...style }}>
-  <TouchableOpacity onPress={() => navigation.navigate("Product")} style={{ ...styles.wrapperFeature, ...style }}>
+  <TouchableOpacity onPress={() => navigation.navigate("Product", {itemId: item.id, img_url: item.url})} style={{ ...styles.wrapperFeature, ...style }}>
     <View style={styles.wrapperFeatureImage}>
-      <ImageBackground source={{ uri: item.url }} style={ styles.featureImage }>
-        <View style={styles.featurePromoWrapper}>
-          <Text style={styles.featurePromoLabel}>
-            {item.promoLabel}
-          </Text>
-        </View>
-      </ImageBackground>
+      <SharedElement id={`item.${item.id}.url`}>
+        <ImageBackground source={{ uri: item.url }} style={ styles.featureImage }>
+          <View style={styles.featurePromoWrapper}>
+            <Text style={styles.featurePromoLabel}>
+              {item.promoLabel}
+            </Text>
+          </View>
+        </ImageBackground>
+      </SharedElement>
       <View style={styles.featureTimeWrapper}>
         <Text style={styles.featureTimeValue}>
           {item.deliveryTime}
