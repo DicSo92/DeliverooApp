@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     paddingVertical: 4,
     paddingHorizontal: 14,
-    backgroundColor: COLORS.primary,
+    backgroundColor: COLORS.warning,
     borderRadius: 5,
     alignSelf: "flex-start",
   },
